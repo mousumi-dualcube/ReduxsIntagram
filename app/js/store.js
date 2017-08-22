@@ -1,28 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import routes from './routes'
-import {createStore, applyMiddleware} from 'redux'
-import { Provider } from 'react-redux'
-import reducer from './reducers'
-import { getAllProducts } from './actions'
-import thunk from 'redux-thunk'
-import { createLogger } from 'redux-logger'
+import { createStore } from 'redux'
+import { syncHistoryWithStore } from 'react-router-redux'
+import { browserHistory } from 'react-router'
 
-const middleware = [ thunk ];
-if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger());
+// import the root reducer
+import rootReducer from './reducers/index';
+
+//data
+import comments from '../data/comments'
+import posts from '../data/posts'
+
+//initial state
+const initialState = {
+	comments,
+	posts
 }
 
-const store = createStore(
-  reducer,
-  applyMiddleware(...middleware)
-)
-
-store.dispatch(getAllProducts());
-
-ReactDOM.render(
-	<Provider store={store}>
-		{routes}
-	</Provider>, 
-	document.getElementById('app')
-)
+const store = createStore(rootReducer, initialState);
+export const history = syncHistoryWithStore(browserHistory, store);
+export default store;
