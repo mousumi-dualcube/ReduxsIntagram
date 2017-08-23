@@ -1,13 +1,6 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
-
-var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/app/index.html',
-  filename: 'index.html',
-  inject: 'body'
-});
 
 module.exports = {
   target: 'web',
@@ -43,7 +36,6 @@ module.exports = {
   },
   plugins: 
     [
-      HtmlWebpackPluginConfig,     
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin()
     ]
