@@ -1,0 +1,9 @@
+.grid-photo-wrap {
+	width: 30%;
+    display: inline-block;
+    margin: 20px;
+}
+.grid-photo-wrap img {
+	width: 400px;
+	height: 400px;
+}
