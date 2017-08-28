@@ -19,6 +19,7 @@ class Single extends React.Component{
 					<p>{post.caption}</p>
 				</div>
 				<div>{post.likes} likes</div>
+				<button onClick={this.props.incrementPost.bind(null, i)}>Increment</button>
 				<div>
 					<Comment postComments={postComments} {...this.props} />
 				</div>	

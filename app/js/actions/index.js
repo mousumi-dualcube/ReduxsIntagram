@@ -1,5 +1,4 @@
 //INCREMENT
-
 export function incrementPost(index) {
 	return {
 		type : 'INCREMENT_LIKES',
@@ -7,12 +6,19 @@ export function incrementPost(index) {
 	}
 }
 
-
 //INCREMENT
-
 export function incrementComment(index) {
 	return {
 		type : 'INCREMENT_COMMENTS',
 		index
+	}
+}
+
+export function addComment(postId, author, comment) {
+	return {
+		type : 'ADD_COMMENT',
+		postId,
+		author,
+		comment
 	}
 }

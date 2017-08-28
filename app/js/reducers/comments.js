@@ -1,8 +1,21 @@
 function comments(state = [], action) {
+	if(typeof action.postId !== 'undefined') {
+		return {
+			...state,
+	    	[action.postId]: postComments(state[action.postId], action)
+	    }
+	}
+	return state;
+}
+
+function postComments(state= [], action) {
   switch(action.type) {
-    case 'INCREMENT_COMMENTS' :
-      console.log("Incrementing comments!!");
-      return state
+    case 'ADD_COMMENT' :
+    	console.log('Adding Comment', action)
+    	return [...state,{
+	        user: action.author,
+	        text: action.comment
+	    }]
     default:
       return state
   }
