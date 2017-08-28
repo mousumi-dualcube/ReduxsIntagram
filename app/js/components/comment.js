@@ -8,14 +8,15 @@ class Comment extends React.Component{
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const post_id = this.props.params
+		const {postId} = this.props.params
 		const author = this.refs.author.value
 		const comment = this.refs.comment.value
-		this.props.addComment(post_id, author, comment)
+		this.props.addComment(postId, author, comment)
 		this.refs.commentForm.reset()
 	}
 
 	render() {
+		const {postId} = this.props.params
 		return (
 			<div className="comments">
 		        {this.props.postComments.map((comment, i) => {
@@ -24,6 +25,7 @@ class Comment extends React.Component{
 							<p>
 							  <strong>{comment.user}</strong>
 							  {comment.text}
+							  <button onClick={this.props.removeComment.bind(null, postId, i)}>remove</button>
 							</p>
 						</div>
 	    			)
